@@ -3,10 +3,10 @@ import face_recognition
 import numpy as np
 
 #loading images
-face = face_recognition.load_image_file('elonmusk.jpg')
+face = face_recognition.load_image_file('superman.jpg')
 image = cv2.cvtColor(face,cv2.COLOR_BGR2RGB)
 #cvtColor is used to convert an image from one color to another
-faceTest = face_recognition.load_image_file('xavi.jpg')
+faceTest = face_recognition.load_image_file('cavill.jpg')
 imageTest = cv2.cvtColor(faceTest,cv2.COLOR_BGR2RGB)
 
 #finding the face in our image
@@ -25,6 +25,13 @@ cv2.rectangle(imageTest,(faceLocTest[3],faceLocTest[0]),(faceLocTest[1],faceLocT
 results = face_recognition.compare_faces([encodeImg],encodeTest)
 print(results)
 
-cv2.imshow('Elon Musk',image)
-cv2.imshow('Elon Musk Test',imageTest)
+#checking for similarity
+faceDis = face_recognition.face_distance([encodeImg],encodeTest)
+#the lower the distance the better the match
+print(faceDis)
+cv2.putText(imageTest,f"{round(faceDis[0],2)} {results[0]}",(50,50),cv2.FONT_HERSHEY_SIMPLEX,1,(0,0,255),2)
+
+
+cv2.imshow('Image',image)
+cv2.imshow('Image Test',imageTest)
 cv2.waitKey(0)
