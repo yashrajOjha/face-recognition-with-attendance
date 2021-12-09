@@ -10,4 +10,5 @@ For the code to work successfully we should include the following libraries:
 - face-recognition
 - numpy 
 - opencv-python
+
 These dependancies can easily be installed using PyCharm IDE.
