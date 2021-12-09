@@ -27,7 +27,7 @@ def findEncode(images):
 
 def markAttendance(name):
     with open("Attendance.csv","r+") as f:
-        mylist = f.readline()
+        mylist = f.readlines()
         nameList = []
         for line in mylist:
             entry = line.split(",") #split the column to name and time
